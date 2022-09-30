@@ -51,7 +51,7 @@ So for every next time you want to root a Toon  :
     - wait for Kali with menu bar at top of the screen
  - in the top left corner of Kali is a black box and a $ sign in it
  - click that and in the window you enter the next statements :
-    - git clone https://github.com/JackV2020/Root-A-Toon-USB-Stick.git
+    - git clone https://github.com/ToonSoftwareCollective/Root-A-Toon-USB-Stick.git
     - cd Root-A-Toon-USB-Stick
     - ./setup-wifi.sh<br>
        read and follow the instructions<br>
