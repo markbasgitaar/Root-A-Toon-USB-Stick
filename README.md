@@ -57,8 +57,11 @@ So for every next time you want to root a Toon:
    ./setup-wifi.sh
    ```
    
-read and follow the instructions<br>
-connect your Toon to the Wi-Fi named 'ToonRouter'<br>
+read and follow the instructions
+
+<br>
+
+Connect your Toon to the Wi-Fi named 'ToonRouter'<br>
 
 > [!NOTE]
 >  No ToonRouter SSID visible?<br>
