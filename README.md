@@ -1,92 +1,144 @@
 # Root-A-Toon-USB-Stick
 
-Software for rooting a (dutch/belgian) Toon/Boxx using software running from a USB stick only.
+This application is built to root a Toon thermostat (available in The Netherlands) using software from an USB stick only.
 
-After rooting you don't need a subscription anymore and you have access to a ToonStore with a growing number of apps. For more technical people there is a possibility to ssh into the Toon if they want with username root and password toon.
+After rooting you don't need a subscription anymore and you have access to a ToonStore. 
 
-Based on Root-A-Toon from https://github.com/ToonSoftwareCollective/Root-A-Toon.
+<br>
 
-I modified the 2 scripts root-toon.sh and activate-toon.sh so they run from Kali which can be booted from a USB stick.
+## About the project
+
+*Based on Root-A-Toon from https://github.com/ToonSoftwareCollective/Root-A-Toon.*
+
+The 2 scripts root-toon.sh and activate-toon.sh are modified so they can run on Kali Linux from an USB stick.
 
 Like with the original initiating scripts, the actual rooting is done by the so called 'payload' scripts which are still maintained on https://github.com/ToonSoftwareCollective/Root-A-Toon.
 
-I created the script setup_wifi.sh to simplify the sharing of the wired Internet connection of your computer over the Wi-Fi to your Toon.
+The script setup_wifi.sh is created to simplify the sharing of the wired Internet connection of your computer over the Wi-Fi to your Toon.
+
+<br>
 
 ## What do you need?
 
-A 4 GB memory stick and a Windows/Linux/macOS/OS X computer with an Ethernet card and wifi.
+An USB stick of minimal 4 GB and a Windows/Linux/macOS/OS X computer with an Ethernet card and wifi.
 
-Details for USB stick creation are available on https://www.kali.org/docs/usb.
+## How to install?
 
 Summary to prepare a stick from Windows ( 1 time only ) :
- - old instruction was :
-    - download Kali live from https://www.kali.org/get-kali/#kali-live
-    - ( until I received an issue that ncat does not support -q option)
- - new instruction what I did not test yet but was confirmed by issue sender :
-    - find a live image from a folder in http://old.kali.org/kali-images/
-    - based on my Kali version info from 'lsb_release -a' :
-        - No LSB modules are available.
-        - Distributor ID: Kali
-        - Description:    Kali GNU/Linux Rolling
-        - Release:        2021.2
-        - Codename:       kali-rolling
-    - this is version 2021.2 but the issue sender confirmed it works for 2021.4
-    - so I think a good start could be one of the live iso's from :
-        - http://old.kali.org/kali-images/kali-2021.4/
-        - probably http://old.kali.org/kali-images/kali-2021.4/kali-linux-2021.4-live-amd64.iso
- - download rufus from https://rufus-portable.en.uptodown.com/windows
+ - download [Kali Linux](http://old.kali.org/kali-images/kali-2021.4/kali-linux-2021.4-live-amd64.iso)
+ - download [Rufus](https://rufus-portable.en.uptodown.com/windows)
  - insert USB stick
  - start rufus
     - make sure that the right USB stick is selected
-    - click SELECT to browse to the Kali iso you downloaded
+    - click SELECT to browse to the Kali iso file you downloaded
     - click Start and accept all default answers
-    - (unlike Kali site which suggests to use dd and create an extra partition)
-    - wait for iso to be written to stick
+    - wait for iso file to be written to the USB stick
+  
+## How to use?
 
-To root a Toon you need the stick with Kali you created before.
-So for every next time you want to root a Toon  :
- - boot from the Kali USB stick
+To root a Toon you need the USB stick with Kali Linux you created before.
+So for every next time you want to root a Toon:
+ - boot from the Kali Linux USB stick
     - ( you may need to enable USB boot in the BIOS )
     - press enter on the blue Kali startup menu
-    - wait for Kali with menu bar at top of the screen
- - in the top left corner of Kali is a black box and a $ sign in it
- - click that and in the window you enter the next statements :
-    - git clone https://github.com/ToonSoftwareCollective/Root-A-Toon-USB-Stick.git
-    - cd Root-A-Toon-USB-Stick
-    - ./setup-wifi.sh<br>
-       read and follow the instructions<br>
-       connect your Toon to the Wi-Fi named ToonRouter<br>
-       no ToonRouter SSID ?<br>
-       note that it may take some time for the SSID to appear<br>
-       you can also test on your phone<br>
-       I have to stop the WiFi on my phone, wait 10-20 seconds,<br>
-       turn it on and wait for it to appear<br>
-       sometimes I do the disabling and enabling 3 times before I see it<br>
-       'patience is a virtue'<br>
-       when you find out your Toon needs to be activated before you can root :
-    - ./activate-toon.sh<br>
-       read and follow the instructions<br>
-       now you are ready to root your Toon :
-    - ./root-toon.sh<br>
-      read and follow the instructions
+    - wait for Kali Linux to startup with the menu bar at top of the screen
+
+   <br>
+   
+ - open a 'terminal window' with keyboard shortcut: Ctrl + Alt + T
+ - enter the commands:
+   ```
+   git clone https://github.com/ToonSoftwareCollective/Root-A-Toon-USB-Stick.git
+   ```
+   ```
+   cd Root-A-Toon-USB-Stick
+   ```
+   ```
+   ./setup-wifi.sh
+   ```
+   
+read and follow the instructions<br>
+connect your Toon to the Wi-Fi named 'ToonRouter'<br>
+
+> [!NOTE]
+>  No ToonRouter SSID visible?<br>
+>  Note that it may take some time for the SSID to appear<br>
+
+<br>
+
+**When you find out your Toon needs to be activated before you can root, enter the command:**
+   
+```
+./activate-toon.sh
+```
+
+Read and follow the instructions
+
+ <br>
+ 
+Now you are ready to root your Toon:
+```
+./root-toon.sh
+```
+Read and follow the instructions
+
+<br>
+
+For more technical people there is a possibility to ssh into the Toon with the login details below:
+
+SSH to Toon:
+    *(change [IP TOON] to the IP adress of your Toon)*
+
+```
+ssh -oHostKeyAlgorithms=+ssh-rsa root@[IP TOON]
+```
+
+* username: root
+* password: toon
+
+<br>
+
+# Additional features
 
 ## Rooting test run
 
-To start a rooting test run which does not modify the Toon yet you can issue ```sudo bash root-toon.sh test```<br>
+To start a rooting test run which does not modify the Toon yet you can issue 
+```
+sudo bash root-toon.sh test
+```
+
 This will generate 2 messages on your Toon and restart the GUI if the access is succesfull.
+
+<br>
 
 ## Rooting
 
-To root the Toon yet you can issue ```sudo bash root-toon.sh root```<br>
+To root the Toon yet you can issue 
+```
+sudo bash root-toon.sh root
+```
+
 This will download the 'payload' as maintained on https://github.com/ToonSoftwareCollective/Root-A-Toon and root your Toon with the latest version of these scripts.
+
+<br>
 
 ## Sending own payload
 
-To send your own script as 'payload' to the Toon you can issue ```sudo bash root-toon.sh yourpayloadfile```<br>
-For demo purpose I included a payload file named 'check' which you can run by ```sudo bash root-toon.sh check```<br>
+To send your own script as 'payload' to the Toon you can issue 
+```
+sudo bash root-toon.sh yourpayloadfile
+```
+
+For demo purpose I included a payload file named 'check' which you can run by 
+```
+sudo bash root-toon.sh check
+```
+
 This will generate 4 messages on your Toon if the access is succesfull.
 
-Below is a direct copy of the explanation from https://github.com/ToonSoftwareCollective/Root-A-Toon:
+<br>
+
+***Below is a direct copy of the explanation from https://github.com/ToonSoftwareCollective/Root-A-Toon:***
 
 ## How is root access possible?
 The script intercepts Toon traffic as it is trying to create a VPN connection towards the Toon servicecenter. First it starts blocking port 443 which results in blocking this VPN access (and also other traffic, but that is not a problem during rooting). Next, the Toon will try to access the servicecenter (from 172.16.0.0/12 address space) over the normal network port (wlan0 interface on the Toon) because there is no more-specific route over a (non existing) VPN connection anymore. The script will see this traffic (using tcpdump) and will store the IP address for the servicecenter which the Toon wants to talk to.
